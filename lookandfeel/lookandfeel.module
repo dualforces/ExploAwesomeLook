@@ -1,0 +1,1548 @@
+<?php
+// $Id$
+
+
+/**
+* Implements hook_preprocess_nodee().
+*/
+function lookandfeel_preprocess_node(&$vars) {
+
+
+  global $node_count;
+  $node_count++;
+  $node = $vars['node'];  
+  $vars['node_count'] = $node_count;
+  $node_url = $vars['node_url'];
+  
+//  if   ($vars['node_count'] % 3 == 0)
+ // 	$vars['node_count'] = '</div><div class="row">';
+  
+  $old_image = $node->field_old_image;
+   $body = $node->body['und'][0]['value'];
+
+  $old_image2 = $old_image['und'];
+  $old_image3 = $old_image2[0];   
+  $old_image4 = $old_image3['safe_value'];
+
+  $the_old_image = $node->field_old_image['und'][0]['safe_value'];
+  $the_url = $node->field_website_url['und'][0]['safe_value'];
+  // the microsite url
+  $microsite_url = $node->field_microsite_url['und'][0]['safe_value'];
+  
+  $small_description = $node->field_small_description['und'][0]['safe_value'];
+
+  $hide_title = $node->field_hide_title['und'][0]['value'];
+  $text_pos1 = $node->field_replace_1_position_with_sm['und'][0]['value'];
+  $text_pos2 = $node->field_replace_2_position_with_sm['und'][0]['value'];
+
+
+//drupal_set_message('<pre><h2>' . print_r($node, true) . '</h2></pre>');
+  //check_plain($node->title);
+    if ($node->type == 'explocontent')  {
+	   
+	   	     $image = $node->field_image['und'][0]['uri'];
+     	     $image = str_replace('public://', '', $image);
+	   	     $title = $node->title;
+
+
+	   	     $grouping = $node->field_grouping['und'][0]['tid']; // this is bottomnav
+	   	     $topnav = $node->field_topnav['und'][0]['tid']; 
+	   	     $nid = $node->nid;
+
+  		//drupal_set_message('<pre>' . print_r($vars, true) . '</pre>');
+   		global $right_candybox_term;
+   		$right_candybox_term = $grouping;
+   		if ($grouping == '')
+   			$right_candybox_term = $topnav;
+   			
+   		global $right_cnadybox_nid;
+   		$right_cnadybox_nid = $nid;
+   		
+   		global $right_column_view;
+   		$right_column_view = $node->field_right_column_view['und'][0]['value'];
+
+   	
+
+  if ($vars['view_mode'] == 'right_column_candybox') {
+
+	   	     if ($image == '') $image = 'wide3.jpg';
+			 
+			 if($microsite_url != '') {
+				 
+		   	     $vars['renderings'] .= '
+	 	   	  		<a href="'.$node_url.'"><div class="row right_column_candybox podContainer navPodSpecial doubleStack">
+						<div class="podImage "><img src="/sites/default/files/'.$image.'" /></div>
+						<div class="innerLabelSpecial"><h2>'.$title.'</h2><p>'.$small_description.'<br/>
+						<a href="'.$node_url.'">Details</a> | <a href="'.$microsite_url.'">Website</a><br/></div>
+					</div></a>';
+				} else {
+   		   	     $vars['renderings'] .= '
+   	 	   	  		<a href="'.$node_url.'"><div class="row right_column_candybox podContainer navPod doubleStack">
+   						<div class="podImage "><img src="/sites/default/files/'.$image.'" /></div>
+   						<div class="innerLabel"><h2>'.$title.'</h2><p>'.$small_description.'<br/>
+   						<a href="'.$node_url.'">Details</a> | <a href="'.$microsite_url.'">Website</a><br/></div>
+   					</div></a>';
+					
+					
+				}
+
+
+
+	 //   drupal_set_message('image is = '.$image);
+	 
+
+    } 
+    }
+    
+    /// end explocontent right column candybox renderings
+
+
+ if ($node->type == 'exploclusters')  {
+ 
+drupal_set_message('view mode is = '.$vars['view_mode']);
+
+	   
+	   	     $image = $node->field_image['und'][0]['filename'];
+	   	     $title = $node->title;
+	   	   	 $small_text = $node->field_small_description['und'][0]['value'];
+
+
+	   	     $grouping = $node->field_grouping['und'][0]['tid']; // this is bottomnav
+	   	     $topnav = $node->field_topnav['und'][0]['tid']; 
+	   	     
+
+	   	     $layout = $node->field_layout_selection['und'][0]['value'];
+	   	     
+	   	     $nodeid_pos1 = $node->field_nodeid_for_position_1_['und'][0]['value'];
+	   	     $nodeid_pos2 = $node->field_nodeid_for_position_2['und'][0]['value'];
+	   	     $nodeid_pos3 = $node->field_nodeid_for_position_3['und'][0]['value'];
+	   	     $nodeid_pos4 = $node->field_nodeid_for_position_4['und'][0]['value'];
+	   	     $nodeid_pos5 = $node->field_nodeid_for_position_5['und'][0]['value'];
+	   	     $nodeid_pos6 = $node->field_nodeid_for_position_6['und'][0]['value'];
+	   	     $nodeid_pos7 = $node->field_nodeid_for_position_7['und'][0]['value'];
+	   	     $nodeid_pos8 = $node->field_nodeid_for_position_8['und'][0]['value'];
+	   	     
+	   	     // make these global so i can pass it to the template.
+	   	     global $cluster;
+	   	     
+	   	     $cluster = array();
+	   	     $cluster['layout'] = $layout;
+	   	     $cluster['blurb'] = $small_text;
+
+	   	     $cluster['1'] =  $nodeid_pos1;
+	   	     $cluster['2'] =  $nodeid_pos2;
+	   	     $cluster['3'] =  $nodeid_pos3;
+	   	     $cluster['4'] =  $nodeid_pos4;
+	   	     $cluster['5'] =  $nodeid_pos5;
+	   	     $cluster['6'] =  $nodeid_pos6;
+	   	     $cluster['7'] =  $nodeid_pos7;
+	   	     $cluster['8'] =  $nodeid_pos8;
+	   	     $cluster['view_mode'] = $vars['view_mode'];
+
+
+	   	     
+	   	     $nid = $node->nid;
+
+  		//drupal_set_message('<pre>' . print_r($node, true) . '</pre>');
+   		global $right_candybox_term;
+   		$right_candybox_term = $grouping;
+   		if ($grouping == '')
+   			$right_candybox_term = $topnav;
+   			
+   		global $right_cnadybox_nid;
+   		$right_cnadybox_nid = $nid;
+   		
+   		global $right_column_view;
+   		$right_column_view = $node->field_right_column_view['und'][0]['value'];
+
+   	
+/*
+  if ($vars['view_mode'] == 'cluster_layout') {
+  
+  //drupal_set_message('<pre><h2>' . print_r($cluster, true) . '</h2></pre>');
+
+
+	   	     if ($image1 == '')  $image1 = 'big.jpg';
+  	   if ($image2 == '')  $image2 = 'field_trips.jpg';
+   	   if ($image3 == '')  $image3 = 'field_trips.jpg';
+   	   if ($image4 == '')  $image4 = 'cat.jpg';
+
+
+////// 3short 
+   	   if ($layout =='3short') 
+	      $vars['renderings'] .= '
+	   <div class="row">
+
+	   		
+	   		<div class="span3">
+	   		<a href="/node/'.$nid1.'"><div class="row  podContainer navPod ">
+					<div class="podImage "><img src="/sites/default/files/r2p.jpg" /></div>
+					<div class="innerLabel"><h2>LAYOUT is '.$layout.'</h2><p>This is descriptive text</p></div>			
+				</div></a>
+	   		
+	   		
+	   		</div>
+
+	   		<div class="span3">		
+				
+					<a href="/node/'.$nid3.'"><div class="row  podContainer navPod ">
+					<div class="podImage "><img src="/sites/default/files/r2p.jpg" /></div>
+					<div class="innerLabel"><h2>'.$title3.'</h2><p>This is descriptive text</p></div>			
+				</div></a>
+			</div>
+				
+			<div class="span3">
+	   			<a href="/node/'.$nid4.'"><div class="row  podContainer navPod ">
+					<div class="podImage "><img src="/sites/default/files/r2p.jpg" /></div>
+					<div class="innerLabel"><h2>'.$title4.'</h2><p>This is primary_pod1</p></div>
+				</div></a>
+				<br/><br/>
+	   		
+	   		</div>
+
+	   				
+				
+	   </div> ';
+////// 3short 
+
+
+
+////// 3tall
+   	   if ($layout =='3tall') 
+	      $vars['renderings'] .= '
+	   <div class="row">
+
+	   		
+	   		<div class="span3">
+	   		<a href="/node/'.$nid1.'"><div class="row  podContainer navPod ">
+					<div class="podImage "><img src="/sites/default/files/tall.jpg" height="300"/></div>
+					<div class="innerLabel"><h2>LAYOUT is '.$layout.'</h2><p>This is descriptive text</p></div>			
+				</div></a>
+	   		
+	   		</div>
+
+	   		<div class="span3">		
+				
+					<a href="/node/'.$nid3.'"><div class="row  podContainer navPod ">
+					<div class="podImage "><img src="/sites/default/files/r2p.jpg"  height="300" /></div>
+					<div class="innerLabel"><h2>'.$title3.'</h2><p>This is descriptive text</p></div>			
+				</div></a>
+			</div>
+				
+			<div class="span3">
+	   			<a href="/node/'.$nid4.'"><div class="row  podContainer navPod ">
+					<div class="podImage "><img src="/sites/default/files/r2p.jpg"  height="300" /></div>
+					<div class="innerLabel"><h2>'.$title4.'</h2><p>This is primary_pod1</p></div>
+				</div></a>
+				<br/><br/>
+	   		
+	   		</div>
+
+	   				
+				
+	   </div> ';
+////// 3tall
+
+
+
+////// 4a
+   	   if ($layout =='4a') 
+	       $vars['renderings'] .= '
+	   <div class="row">
+
+
+	   		<div class="span3">
+	   		
+				
+				
+		<!-- position #2 -  WIDE -->
+
+	   				<a href="/node/'.$nid2.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/education.jpg" height="300"/></div>
+					<div class="innerLabel"><h2>'.$title2.'</h2><p>'.$small_text2.'</p></div>			
+				</div></a>
+	   		
+	   		
+	   		</div>
+
+	   		<div class="span2">	
+	   		
+	   	<!-- position #3 -  SMALL -->
+	
+				<a href="/node/'.$nid3.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/small2.jpg" /></div>
+					<div class="innerLabel"><h2>'.$title3.'</h2><p>'.$small_text3.'</p></div>			
+				</div></a>
+				
+	   	<!-- position #4 -  SMALL -->
+				
+					<a href="/node/'.$nid4.'"><div class="row  podContainer navPod doubleStack align-bottom">
+					<div class="podImage "><img src="/sites/default/files/small2.jpg" /></div>
+					<div class="innerLabel"><h2>'.$title4.'</h2><p>'.$small_text4.'</p></div>			
+				</div></a>
+			</div>
+				
+			<div class="span4">
+			
+	   	<!-- position #5 -  BIG -->
+
+	   			<a href="/node/'.$nid5.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image5_big.'" /></div>
+					<div class="innerLabel"><h2>'.$title5.'</h2><p>'.$small_text5.'</p></div>
+				</div></a>
+				<br/><br/>
+	   		
+	   		</div>
+
+	   				
+				
+	   </div> ';
+	   
+////// 4a
+
+
+////// 5a
+   	   if ($layout =='5a') 
+	       $vars['renderings'] .= '
+	   <div class="row">
+
+
+	   		<div class="span3">
+	   		
+	     <!-- position #1 -  WIDE -->
+
+	     	<a href="/node/'.$nid1.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/education.jpg" /></div>
+					<div class="innerLabel"><h2>'.$title1.'</h2><p>'.$small_text1.'</p></div>			
+				</div></a>				<br/>
+				
+				
+				
+		<!-- position #2 -  WIDE -->
+
+	   				<a href="/node/'.$nid2.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/education.jpg" /></div>
+					<div class="innerLabel"><h2>'.$title2.'</h2><p>'.$small_text2.'</p></div>			
+				</div></a>
+	   		
+	   		
+	   		</div>
+
+	   		<div class="span2">	
+	   		
+	   	<!-- position #3 -  SMALL -->
+	
+				<a href="/node/'.$nid3.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/small2.jpg" /></div>
+					<div class="innerLabel"><h2>'.$title3.'</h2><p>'.$small_text3.'</p></div>			
+				</div></a>
+				
+	   	<!-- position #4 -  SMALL -->
+				
+					<a href="/node/'.$nid4.'"><div class="row  podContainer navPod doubleStack align-bottom">
+					<div class="podImage "><img src="/sites/default/files/small2.jpg" /></div>
+					<div class="innerLabel"><h2>'.$title4.'</h2><p>'.$small_text4.'</p></div>			
+				</div></a>
+			</div>
+				
+			<div class="span4">
+			
+	   	<!-- position #5 -  BIG -->
+
+	   			<a href="/node/'.$nid5.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image5_big.'" /></div>
+					<div class="innerLabel"><h2>'.$title5.'</h2><p>'.$small_text5.'</p></div>
+				</div></a>
+				<br/><br/>
+	   		
+	   		</div>
+
+	   				
+				
+	   </div> ';
+	   
+////// 5a
+
+
+
+	   
+
+
+
+	 //   drupal_set_message('image is = '.$image);
+	 
+
+    }
+    
+    
+  */   
+    }
+    
+    /// end explocluster 
+
+
+
+
+  
+  if ($node->type == 'explorewebsites') {
+//  drupal_set_message('view mode is = '.$vars['view_mode']);
+
+  
+  $vars['old_image_path'] = '<a href="'.$the_url.'" target="_blank"><img src="http://apps.exploratorium.edu/db/admin/not_library_science/core/uploaded/'.$the_old_image.'"></a>';
+  
+  if ($vars['view_mode'] == 'microsite_pod') {
+  
+  	   	     $title = $node->title;
+
+
+	   	     if ($image == '') $image = 'wide3.jpg';
+			 
+			 //if($microsite_url != '') {
+			 
+	   					 
+			 
+			 $vars['renderings'] .=  '
+			 
+			 <div class="row">
+			 
+			 	<div class="span3">
+			 
+			 <a href="'.$the_url.'" target="_blank"><div class="row right_column_candybox podContainer navPod doubleStack"><img src="http://apps.exploratorium.edu/db/admin/not_library_science/core/uploaded/'.$the_old_image.'"></div></a>
+			 
+			 
+			 	</div>
+			 	
+			 	<div class="span3">
+			 
+			 <a href="'.$the_url.'" target="_blank"><div class="row right_column_candybox podContainer navPod doubleStack"><img src="http://apps.exploratorium.edu/db/admin/not_library_science/core/uploaded/'.$the_old_image.'"></div></a>
+			 
+			 
+			 	</div>
+			 	
+			 	<div class="span3">
+			 
+			 <a href="'.$the_url.'" target="_blank"><div class="row right_column_candybox podContainer navPod doubleStack"><img src="http://apps.exploratorium.edu/db/admin/not_library_science/core/uploaded/'.$the_old_image.'"></div></a>
+			 
+			 
+			 	</div>
+			 	
+			 </div>
+			 ';
+				 
+		   	   /*  $vars['renderings'] .= '
+	 	   	  		<a href="'.$node_url.'"><div class="row right_column_candybox podContainer navPodSpecial doubleStack">
+						<div class="podImage">'.$vars['old_image_path'].'</div>
+						<div class="innerLabelSpecial"><h2>'.$title.'</h2><p>'.$small_description.'<br/>
+						<a href="'.$node_url.'">Details</a> | <a href="'.$microsite_url.'">Website</a><br/></div>
+					</div></a>';
+				*/
+				/*
+				} else {
+   		   	     $vars['renderings'] .= '
+   	 	   	  		<a href="'.$node_url.'"><div class="row right_column_candybox podContainer navPod doubleStack">
+   						<div class="podImage">'.$vars['old_image_path'].'</div>
+   						<div class="innerLabel"><h2>'.$title.'</h2><p>'.$small_description.'<br/>
+   						<a href="'.$node_url.'">Details</a> | <a href="'.$microsite_url.'">Website</a><br/></div>
+   					</div></a>';
+					
+					
+				}
+					*/
+
+
+	 //   drupal_set_message('image is = '.$image);
+	 
+
+    } 
+
+  
+  }
+  
+  
+  
+  if ($vars['view_mode'] == 'full') {
+  
+  
+  	if ($node->type == 'storyarc')  {
+  	
+  		$primary_pod1 = $node->field_primary_related_pod_;
+     	$primary_pod2 = $node->field_primary_related_pod_2;
+   		$primary_pod3 = $node->field_primary_related_pod_3;
+   		$primary_pod4 = $node->field_primary_related_pod_4;
+   		$primary_pod5 = $node->field_primary_related_pod_5;
+   		
+   	//	drupal_set_message('<pre>' . print_r($primary_pod1, true) . '</pre>');
+
+   		
+   		// primary pod #1
+   	   $primary_pod1 = $primary_pod1['und'][0]['entity'];  
+   	   $image1 = $primary_pod1->field_image['und'][0]['filename'];
+   	   $image1_small = $primary_pod1->field_small_image['und'][0]['filename'];
+   	   $image1_big = $primary_pod1->field_big_image['und'][0]['filename'];
+   	   $image1_tall = $primary_pod1->field_tall_image['und'][0]['filename'];
+   	   $title1= $primary_pod1->title;
+   	   $nid1 = $primary_pod1->nid;
+   	   $small_text1 = $primary_pod1->field_small_description['und'][0]['value'];
+   	   
+   		// primary pod #2
+   	   $primary_pod2 = $primary_pod2['und'][0]['entity'];  
+   	   $image2 = $primary_pod2->field_image['und'][0]['filename'];
+   	   $image2_small = $primary_pod2->field_small_image['und'][0]['filename'];
+   	   $image2_big = $primary_pod2->field_big_image['und'][0]['filename'];
+   	   $image2_tall = $primary_pod2->field_tall_image['und'][0]['filename'];
+   	   $title2= $primary_pod2->title;
+   	   $nid2 = $primary_pod2->nid;
+   	   $small_text2 = $primary_pod2->field_small_description['und'][0]['value'];
+
+   		
+    	// primary pod #3
+   	   $primary_pod3 = $primary_pod3['und'][0]['entity'];  
+   	   $image3 = $primary_pod3->field_image['und'][0]['filename'];
+   	   $image3_small = $primary_pod3->field_small_image['und'][0]['filename'];
+   	   $image3_big = $primary_pod3->field_big_image['und'][0]['filename'];
+   	   $image3_tall = $primary_pod3->field_tall_image['und'][0]['filename'];
+   	   $title3= $primary_pod3->title;
+   	   $nid3 = $primary_pod3->nid;
+   	   $small_text3 = $primary_pod3->field_small_description['und'][0]['value'];
+
+   		
+   	   // primary pod #4
+   	   $primary_pod4 = $primary_pod4['und'][0]['entity'];  
+   	   $image4 = $primary_pod4->field_image['und'][0]['filename'];
+   	   $image4_small = $primary_pod4->field_small_image['und'][0]['filename'];
+   	   $image4_big = $primary_pod4->field_big_image['und'][0]['filename'];
+   	   $image4_tall = $primary_pod4->field_tall_image['und'][0]['filename'];
+   	   $title4= $primary_pod4->title;
+   	   $nid4 = $primary_pod4->nid;
+   	   $small_text4 = $primary_pod4->field_small_description['und'][0]['value'];
+
+   		
+    	// primary pod #5
+   	   $primary_pod5 = $primary_pod5['und'][0]['entity'];  
+   	   $image5 = $primary_pod5->field_image['und'][0]['filename'];
+   	   $image5_small = $primary_pod5->field_small_image['und'][0]['filename'];
+   	   $image5_big = $primary_pod5->field_big_image['und'][0]['filename'];
+   	   $image5_tall = $primary_pod5->field_tall_image['und'][0]['filename'];
+   	   $title5= $primary_pod5->title;
+   	   $nid5 = $primary_pod5->nid;
+   	   $small_text5 = $primary_pod5->field_small_description['und'][0]['value'];
+
+  
+  		      $vars['renderings'] .= '
+	   <div class="row">
+	   
+	      	<div class="span5">'.$body.'</div>
+	      	
+	      	<div class="span1"></div>
+
+	   		
+	   		<div class="span3">
+	   			<a href="/node/'.$nid1.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image1.'" /></div>
+					<div class="innerLabel"><h2>'.$title1.'</h2><p>This is primary_pod1</p></div>
+				</div></a>
+				<br/><br/>
+	   		
+	   					
+				<a href="/node/'.$nid2.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image2.'" /></div>
+					<div class="innerLabel"><h2>'.$title2.'</h2><p>This is descriptive text</p></div>			
+				</div></a>
+	
+					<br/><br/>
+
+	   			<a href="/node/'.$nid3.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image3.'" /></div>
+					<div class="innerLabel"><h2>'.$title3.'</h2><p>This is descriptive text</p></div>
+			</div></a>
+	   				   		
+	   			<br/><br/>
+
+	   		
+	   			<a href="/node/'.$nid4.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image4.'" /></div>
+					<div class="innerLabel"><h2>'.$title4.'</h2><p>This is primary_pod1</p></div>
+				</div></a>
+				<br/><br/>	
+	   	
+	  			<a href="/node/'.$nid5.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image5.'" /></div>
+					<div class="innerLabel"><h2>'.$title5.'</h2><p>This is descriptive text</p></div>
+			</div></a>
+				   		
+	   		</div>
+	   		
+	   </div> ';
+	   }
+  
+  } else { // these are the teaser views
+  
+    ///////////////////////////////////////// megapods //////////////////////////
+   if  ($node->type == 'exploevent')  {
+	   
+	   	     $image = $node->field_image['und'][0]['filename'];
+	   	     $title = $node->title;
+	   	     $type = $node->field_event_type['und'][0]['tid']; 
+	   	     $event_date = $node->field_event_date['und'][0]['value'];
+	   	     $event_date = date("l, M d", strtotime($event_date));
+	   	     $event_date_sm = date("M d", strtotime($event_date));
+
+
+	   	     
+	   	     if ($type == '70')
+	   	     	$show_type = 'Member Event';
+
+	   	     $grouping = $node->field_grouping['und'][0]['tid']; // this is bottomnav
+	   	     $topnav = $node->field_topnav['und'][0]['tid']; 
+	   	     $nid = $node->nid;
+
+  	//	drupal_set_message('<pre>' . print_r($vars['view_mode'], true) . '</pre>');
+   		global $right_candybox_term;
+   		$right_candybox_term = $grouping;
+   		if ($grouping == '')
+   			$right_candybox_term = $topnav;
+   			
+   		global $right_cnadybox_nid;
+   		$right_cnadybox_nid = $nid;
+  
+    if ($vars['view_mode'] == 'calendar_list') {
+
+	   	     if ($image == '') $image = 'wide3.jpg';
+	   	     
+	   	     
+	   	     $vars['renderings'] .= ' HIHI
+	   	     	   	     
+	   	     
+<div class="span12 inline2Col inlineBorderTop inlineBorderBottom">
+		<div class="row">
+		<div class="span4 dateDiv"><a href="'.$node_url.'"><img src="/sites/default/files/'.$image.'" /></a></div><div class="dateLabel">'.$event_date.'</div>
+		<div class="span8">
+		<h2><a href="'.$node_url.'">'.$title.'</a></h2>
+		
+		<strong>'.$event_date.'</strong>
+<div> 
+		
+		<p>'.$small_description.'</p>
+		 
+		<a href="'.$node_url.'" class="actionButton">Buy Tickets &rarr;</a></div>
+</div>
+</div>';
+
+    } 
+   	
+
+  if ($vars['view_mode'] == 'right_column_candybox') {
+
+	   	     if ($image == '') $image = 'wide3.jpg';
+	   	     
+	   	     
+	   	     $vars['renderings'] .= ' 
+   	     
+	   	     
+		
+		
+			<a href="'.$node_url.'"><div class="row podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image.'" /></div>
+					<div class="innerLabel"><h2>'.$title.'<br>'.$event_date.'</h2>'.$small_description.'</p></div>
+				</div></a>
+				
+		
+';
+
+	   	   /*  $vars['renderings'] .= '
+ 	   
+	
+				
+				<a href="'.$node_url.'"><div class="row span3 podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image.'" /></div>
+					<div class="innerLabel"><h2>'.$title.'<br>'.$event_date.'</h2>'.$small_description.'</p></div>
+				</div></a>
+				
+	   		
+	   					
+				';
+*/
+
+
+	 //   drupal_set_message('image is = '.$image);
+	 
+
+    } 
+    }
+    
+    /// end explocontent right column candybox renderings
+  
+  
+  
+  
+  ///////////////////////////////////////// megapods //////////////////////////
+   if ($node->type == 'storyarc') {
+   
+   		// flag to hide the title 
+   		//$node->field_hide_title 
+   		
+   		// flags to hide/show the texxt pod
+   		// $node->field_replace_1_position_with_sm
+   		// $node->field_replace_2_position_with_sm
+   		// drupal_set_message('<pre>' . $text_pos1 .' & ' . $text_pos2 . '</pre>');
+   		
+   
+   		// number of primary pods 
+   		$pods_num = $node->field_no_pods_in_story_teaser['und'][0]['value'];
+
+   		// layout of pods 
+   		$pods_layout = $node->field_layout_of_teaser_of_megapd['und'][0]['value'];
+   
+
+   		
+   		
+
+   		// these are the #1-6 primary related pods
+   		$primary_pod1 = $node->field_primary_related_pod_;
+     	$primary_pod2 = $node->field_primary_related_pod_2;
+   		$primary_pod3 = $node->field_primary_related_pod_3;
+   		$primary_pod4 = $node->field_primary_related_pod_4;
+   		$primary_pod5 = $node->field_primary_related_pod_5;
+   		
+   	//	drupal_set_message('<pre>' . print_r($primary_pod1, true) . '</pre>');
+
+   		
+   		// primary pod #1
+   	   $primary_pod1 = $primary_pod1['und'][0]['entity'];  
+   	   $image1 = $primary_pod1->field_image['und'][0]['filename'];
+   	   $image1_small = $primary_pod1->field_small_image['und'][0]['filename'];
+   	   $image1_big = $primary_pod1->field_big_image['und'][0]['filename'];
+   	   $image1_tall = $primary_pod1->field_tall_image['und'][0]['filename'];
+   	   $title1= $primary_pod1->title;
+   	   $nid1 = $primary_pod1->nid;
+   	   $small_text1 = $primary_pod1->field_small_description['und'][0]['value'];
+   	   
+   		// primary pod #2
+   	   $primary_pod2 = $primary_pod2['und'][0]['entity'];  
+   	   $image2 = $primary_pod2->field_image['und'][0]['filename'];
+   	   $image2_small = $primary_pod2->field_small_image['und'][0]['filename'];
+   	   $image2_big = $primary_pod2->field_big_image['und'][0]['filename'];
+   	   $image2_tall = $primary_pod2->field_tall_image['und'][0]['filename'];
+   	   $title2= $primary_pod2->title;
+   	   $nid2 = $primary_pod2->nid;
+   	   $small_text2 = $primary_pod2->field_small_description['und'][0]['value'];
+
+   		
+    	// primary pod #3
+   	   $primary_pod3 = $primary_pod3['und'][0]['entity'];  
+   	   $image3 = $primary_pod3->field_image['und'][0]['filename'];
+   	   $image3_small = $primary_pod3->field_small_image['und'][0]['filename'];
+   	   $image3_big = $primary_pod3->field_big_image['und'][0]['filename'];
+   	   $image3_tall = $primary_pod3->field_tall_image['und'][0]['filename'];
+   	   $title3= $primary_pod3->title;
+   	   $nid3 = $primary_pod3->nid;
+   	   $small_text3 = $primary_pod3->field_small_description['und'][0]['value'];
+
+   		
+   	   // primary pod #4
+   	   $primary_pod4 = $primary_pod4['und'][0]['entity'];  
+   	   $image4 = $primary_pod4->field_image['und'][0]['filename'];
+   	   $image4_small = $primary_pod4->field_small_image['und'][0]['filename'];
+   	   $image4_big = $primary_pod4->field_big_image['und'][0]['filename'];
+   	   $image4_tall = $primary_pod4->field_tall_image['und'][0]['filename'];
+   	   $title4= $primary_pod4->title;
+   	   $nid4 = $primary_pod4->nid;
+   	   $small_text4 = $primary_pod4->field_small_description['und'][0]['value'];
+
+   		
+    	// primary pod #5
+   	   $primary_pod5 = $primary_pod5['und'][0]['entity'];  
+   	   $image5 = $primary_pod5->field_image['und'][0]['filename'];
+   	   $image5_small = $primary_pod5->field_small_image['und'][0]['filename'];
+   	   $image5_big = $primary_pod5->field_big_image['und'][0]['filename'];
+   	   $image5_tall = $primary_pod5->field_tall_image['und'][0]['filename'];
+   	   $title5= $primary_pod5->title;
+   	   $nid5 = $primary_pod5->nid;
+   	   $small_text5 = $primary_pod5->field_small_description['und'][0]['value'];
+
+   	   
+   	   $rendered = false;
+
+
+
+   		
+   		// these are the extendded view related pods (array) commented out for now
+   		/*
+   	   $related = $node->field_related_pod;
+
+   	   $related1 = $related['und'][0]['entity'];  
+   	   $image1 = $related1->field_image['und'][0]['filename'];
+   	   $title1= $related1->title;
+   	   $nid1 = $related1->nid;
+   	   
+   	   $related2 = $related['und'][1]['entity'];  
+   	   $image2 = $related2->field_image['und'][0]['filename'];
+   	   $title2= $related2->title;
+   	   $nid2 = $related2->nid;
+
+   	   $related3 = $related['und'][2]['entity'];  
+   	   $image3 = $related3->field_image['und'][0]['filename'];
+   	   $title3= $related3->title;
+   	   $nid3 = $related3->nid;
+   	   
+   	   $related4 = $related['und'][3]['entity'];  
+   	   $image4 = $related4->field_image['und'][0]['filename'];
+   	   $title4= $related4->title;
+   	   $nid4 = $related4->nid;
+   	   */
+   	   
+	 //  drupal_set_message('<pre>' . print_r($related1, true) . '</pre>');
+	 
+	 //  $vars['renderings'] = theme('lookandfeel_5pods',$variables);
+
+
+if (($pods_layout == 'A') & ($pods_num == '6')) {
+	    $vars['renderings'] = $pods_num.' pods, layout ' . $pods_layout.'<br><br>';
+
+	   if ($image1 == '')  $image1 = 'cat.jpg';
+  	   if ($image2 == '')  $image2 = 'cat.jpg';
+   	   if ($image3 == '')  $image3 = 'cat.jpg';
+   	   if ($image4 == '')  $image4 = 'cat.jpg';
+   	   if ($image5 == '')  $image5 = 'cat.jpg';
+
+   $vars['renderings'] .= '
+	   <div class="row">
+	   
+	      	<div class="span4">'.$small_description.'</div>
+	   		
+	   		<div class="span2 ">
+	   			<a href="/node/'.$nid1.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image1.'" /></div>
+					<div class="innerLabel"><h2>'.$title1.'</h2><p>This is primary_pod1</p></div>
+				</div></a>
+				<br/><br/>
+	   		
+	   		</div>
+	   		
+	   		<div class="span3 ">				
+				<a href="/node/'.$nid2.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image2.'" /></div>
+					<div class="innerLabel"><h2>'.$title2.'</h2><p>This is descriptive text</p></div>			
+				</div></a>
+	   		</div>	
+	   </div>
+	   	   
+	   <div class="row">
+	   		<div class="span3 ">
+	   						<a href="/node/'.$nid3.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image3.'" /></div>
+					<div class="innerLabel"><h2>'.$title3.'</h2><p>This is descriptive text</p></div>
+			</div></a>
+	   				   		
+	   		</div>
+	   		
+	   		<div class="span3 ">
+	   		
+	   			<a href="/node/'.$nid4.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image4.'" /></div>
+					<div class="innerLabel"><h2>'.$title4.'</h2><p>This is primary_pod1</p></div>
+				</div></a>
+				<br/><br/>	
+	   		
+	   		</div>
+	   		<div class="span3 ">
+	  					<a href="/node/'.$nid5.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image5.'" /></div>
+					<div class="innerLabel"><h2>'.$title5.'</h2><p>This is descriptive text</p></div>
+			</div></a>
+				   		
+	   		</div>
+	   		
+	   </div> ';
+	   
+	   
+	   // $vars['renderings'] .= '
+	   // 		   <div class="row">
+	   // 	   
+	   // 		      	<div class="span4">'.$small_description.'</div>
+	   // 	   		
+	   // 		   		<div class="span2 navPod">
+	   // 		   			<a href="/node/'.$nid1.'"><div class="row  podContainer drop-shadow doubleStack">
+	   // 						<div class="podImage "><img src="/sites/default/files/'.$image1.'" /></div>
+	   // 						<div class="innerLabel"><h2>'.$title1.'</h2><p>This is primary_pod1</p></div>
+	   // 					</div></a>
+	   // 					<br/><br/>
+	   // 	   		
+	   // 		   		</div>
+	   // 	   		
+	   // 		   		<div class="span3 navPod">				
+	   // 					<a href="/node/'.$nid2.'"><div class="row  podContainer drop-shadow doubleStack">
+	   // 						<div class="podImage "><img src="/sites/default/files/'.$image2.'" /></div>
+	   // 						<div class="innerLabel"><h2>'.$title2.'</h2><p>This is descriptive text</p></div>			
+	   // 					</div></a>
+	   // 		   		</div>	
+	   // 		   </div>
+	   // 	   	   
+	   // 		   <div class="row">
+	   // 		   		<div class="span3 navPod">
+	   // 		   						<a href="/node/'.$nid3.'"><div class="row  podContainer drop-shadow doubleStack">
+	   // 						<div class="podImage "><img src="/sites/default/files/'.$image3.'" /></div>
+	   // 						<div class="innerLabel"><h2>'.$title3.'</h2><p>This is descriptive text</p></div>
+	   // 				</div></a>
+	   // 	   				   		
+	   // 		   		</div>
+	   // 	   		
+	   // 		   		<div class="span3 navPod">
+	   // 	   		
+	   // 		   			<a href="/node/'.$nid4.'"><div class="row  podContainer drop-shadow doubleStack">
+	   // 						<div class="podImage "><img src="/sites/default/files/'.$image4.'" /></div>
+	   // 						<div class="innerLabel"><h2>'.$title4.'</h2><p>This is primary_pod1</p></div>
+	   // 					</div></a>
+	   // 					<br/><br/>	
+	   // 	   		
+	   // 		   		</div>
+	   // 		   		<div class="span3 ">
+	   // 		  					<a href="/node/'.$nid5.'"><div class="row  podContainer drop-shadow doubleStack">
+	   // 						<div class="podImage "><img src="/sites/default/files/'.$image5.'" /></div>
+	   // 						<div class="innerLabel"><h2>'.$title5.'</h2><p>This is descriptive text</p></div>
+	   // 				</div></a>
+	   // 				   		
+	   // 		   		</div>
+	   // 	   		
+	   // 		   </div> ';
+	   // 		   
+	   // 		   
+	  	   $rendered = true;
+
+}  // end 5 pods layout A
+
+
+	
+if (($pods_layout == 'B') & ($pods_num == '6')) { 
+	    $vars['renderings'] = $pods_num.' pods, layout ' . $pods_layout.'<br><br>';
+
+
+	   if ($image1 == '')  $image1 = 'opening_press.jpg';
+  	   if ($image2 == '')  $image2 = 'field_trips.jpg';
+   	   if ($image3 == '')  $image3 = 'field_trips.jpg';
+   	   if ($image4 == '')  $image4 = 'cat.jpg';
+
+	      $vars['renderings'] .= '
+	   <div class="row">
+
+	   		
+	   		<div class="span3">'.$small_description.'<br/><br/>
+	   		<a href="/node/'.$nid1.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image1.'" /></div>
+					<div class="innerLabel"><h2>'.$title1.'</h2><p>This is descriptive text</p></div>			
+				</div></a>
+	   		
+	   		
+	   		</div>
+
+	   		<div class="span2">		
+				<a href="/node/'.$nid2.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image2.'" /></div>
+					<div class="innerLabel"><h2>'.$title2.'</h2><p>This is descriptive text</p></div>			
+				</div></a>
+				<br/><br/>
+					<a href="/node/'.$nid3.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image3.'" /></div>
+					<div class="innerLabel"><h2>'.$title3.'</h2><p>This is descriptive text</p></div>			
+				</div></a>
+			</div>
+				
+			<div class="span4">
+	   			<a href="/node/'.$nid4.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image4.'" /></div>
+					<div class="innerLabel"><h2>'.$title4.'</h2><p>This is primary_pod1</p></div>
+				</div></a>
+				<br/><br/>
+	   		
+	   		</div>
+
+	   				
+				
+	   </div> ';
+	   
+	   $rendered = true;
+		   
+	   
+}   // end 5pods layout B
+
+
+//////////////  4 pod layouts start here ////////////////////
+
+	   
+	   
+if (($pods_layout == 'A') & ($pods_num == '5')) {
+	    $vars['renderings'] = $pods_num.' pods, layout ' . $pods_layout.'<br><br>';
+
+
+   if ($image1_big == '')  
+	   		$image1_big = 'big2.jpg';
+   if ($image2 == '')  
+  	   		$image2 = 'wide3.jpg';
+    if ($image3 == '') 
+   	   		$image3 = 'wide3.jpg';
+     if ($image4_small == '') 
+   	    	$image4_small = 'small2.jpg';
+   	   if ($image5_small == '') 
+ 	    	$image5_small = 'small2.jpg';
+
+	      $vars['renderings'] .= '
+	   <div class="row">
+	   
+	   		<!-- position #1 - BIG -->
+	   		<div class="span4">
+	   			<a href="/node/'.$nid1.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image1_big.'" /></div>
+					<div class="innerLabel"><h2>'.$title1.'</h2><p>'.$small_text1.'</p></div>
+				</div></a>
+				<br/><br/>
+	   		
+	   		</div>
+	   		
+	   		<!-- position #2 -  WIDE -->
+
+	   		<div class="span3">';
+	   		
+	   			if ($text_pos2) // add text pod
+	   			   		$vars['renderings'] .= '<div class="textWidePod">'.$small_description.'</div>';
+	  
+	   		   else  //  image pod
+	   		   	
+	   		   			$vars['renderings'] .= '<a href="/node/'.$nid2.'"><div class="row  podContainer navPod doubleStack megaPodAlignBottom">
+					<div class="podImage "><img src="/sites/default/files/'.$image2.'" /></div>
+					<div class="innerLabel"><h2>'.$title2.'</h2><p>'.$small_text2.'</p></div>			
+				</div></a>
+				<br/>';
+   		
+	   			
+	   			
+	   			$vars['renderings'] .= '
+	   			
+	   			<!-- position #3 -  WIDE -->
+
+	   			<a href="/node/'.$nid3.'"><div class="row  podContainer navPod doubleStack megaPodAlignBottom">
+					<div class="podImage "><img src="/sites/default/files/'.$image3.'" /></div>
+					<div class="innerLabel"><h2>'.$title3.'</h2><p>'.$small_text3.'</p></div>			
+				</div></a>
+	   		
+	   		
+	   		</div>
+	   			<!-- position #4 -  SMALL -->
+
+	   		<div class="span2">		
+				<a href="/node/'.$nid4.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image4_small.'" /></div>
+					<div class="innerLabel"><h2>'.$title4.'</h2><p>'.$small_text4.'</p></div>			
+				</div></a>
+			<br/>
+				  <!-- position #5 -  SMALL -->
+
+					<a href="/node/'.$nid5.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image5_small.'" /></div>
+					<div class="innerLabel"><h2>'.$title5.'</h2><p>'.$small_text5.'</p></div>			
+				</div></a>
+
+	   				
+				
+	   </div> ';
+	   $rendered = true;
+ 
+	   
+}; // end 5 pods layout A
+	
+if (($pods_layout == 'B') & ($pods_num == '5')) { 
+	    $vars['renderings'] = $pods_num.' pods, layout ' . $pods_layout.'<br><br>';
+
+
+   if ($image1 == '')  
+	   		$image1 = 'wide3.jpg';
+   if ($image2 == '')  
+  	   		$image2 = 'wide3.jpg';
+    if ($image3_small == '') 
+   	   		$image3_small = 'small2.jpg';
+     if ($image4_small == '') 
+   	    	$image4_small = 'small2.jpg';
+    if ($image5_big == '') 
+ 	    	$image5_big = 'big2.jpg';
+ 	    	
+
+	      $vars['renderings'] .= '
+	   <div class="row">
+
+
+	   		<div class="span3">
+	   		
+	     <!-- position #1 -  WIDE -->
+
+				';
+	   		
+	   			if ($text_pos1) // add text pod
+	   			   		$vars['renderings'] .= '<div class="textWidePod">'.$small_description.'</div>';
+	  
+	   		   else  //  image pod
+	   		   	
+	   		   			$vars['renderings'] .= '<a href="/node/'.$nid1.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image1.'" /></div>
+					<div class="innerLabel"><h2>'.$title1.'</h2><p>'.$small_text1.'</p></div>			
+				</div></a>				<br/>';
+   		
+	   			
+	   			
+	   			$vars['renderings'] .= '
+				
+				
+		<!-- position #2 -  WIDE -->
+
+	   				<a href="/node/'.$nid2.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image2.'" /></div>
+					<div class="innerLabel"><h2>'.$title2.'</h2><p>'.$small_text2.'</p></div>			
+				</div></a>
+	   		
+	   		
+	   		</div>
+
+	   		<div class="span2">	
+	   		
+	   	<!-- position #3 -  SMALL -->
+	
+				<a href="/node/'.$nid3.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image3_small.'" /></div>
+					<div class="innerLabel"><h2>'.$title3.'</h2><p>'.$small_text3.'</p></div>			
+				</div></a>
+				
+	   	<!-- position #4 -  SMALL -->
+				
+					<a href="/node/'.$nid4.'"><div class="row  podContainer navPod doubleStack align-bottom">
+					<div class="podImage "><img src="/sites/default/files/'.$image4_small.'" /></div>
+					<div class="innerLabel"><h2>'.$title4.'</h2><p>'.$small_text4.'</p></div>			
+				</div></a>
+			</div>
+				
+			<div class="span4">
+			
+	   	<!-- position #5 -  BIG -->
+
+	   			<a href="/node/'.$nid5.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image5_big.'" /></div>
+					<div class="innerLabel"><h2>'.$title5.'</h2><p>'.$small_text5.'</p></div>
+				</div></a>
+				<br/><br/>
+	   		
+	   		</div>
+
+	   				
+				
+	   </div> ';
+	   
+	   $rendered = true;
+		   
+	   
+}   // end 5pods layout B
+
+
+
+
+if (($pods_layout == 'C') & ($pods_num == '5')) { 
+	    $vars['renderings'] = $pods_num.' pods, layout ' . $pods_layout.'<br><br>';
+
+
+   if ($image1 == '')  
+	   		$image1 = 'wide3.jpg';
+   if ($image2 == '')  
+  	   		$image2 = 'wide3.jpg';
+    if ($image3_big == '') 
+   	   		$image3_big = 'big2.jpg';
+     if ($image4_small == '') 
+   	    	$image4_small = 'small2.jpg';
+    if ($image5_small == '') 
+ 	    	$image5_small = 'small2.jpg';
+
+	      $vars['renderings'] .= '
+	   <div class="row">
+
+	   		
+	   		<div class="span3">
+	   			   	<!-- position #1 -  WIDE -->';
+	   		
+	   			if ($text_pos1) // add text pod
+	   			   		$vars['renderings'] .= '<div class="textWidePod">'.$small_description.'</div>';
+	  
+	   		   else  //  image pod
+	   		   	
+	   		   			$vars['renderings'] .= '
+	   		 
+				<a href="/node/'.$nid1.'">
+					<div class="row  podContainer navPod doubleStack">
+						<div class="podImage "><img src="/sites/default/files/'.$image1.'" /></div>
+						<div class="innerLabel"><h2>'.$title1.'</h2><p>'.$small_text1.'</p></div>			
+					</div></a>	   			<br/>
+';
+   		
+	   			
+	   			
+	   			$vars['renderings'] .= '
+	   			
+
+	   			  	<!-- position #2 -  WIDE -->
+
+				<a href="/node/'.$nid2.'">
+					<div class="row  podContainer navPod doubleStack">
+						<div class="podImage "><img src="/sites/default/files/'.$image2.'" /></div>
+						<div class="innerLabel"><h2>'.$title2.'</h2><p>'.$small_text2.'</p></div>			
+					</div></a>
+   		
+
+				
+	 	   		
+	   		</div>
+
+	   		<div class="span4">		
+	   		
+	   			   	<!-- position #3 -  BIG -->
+
+				<a href="/node/'.$nid3.'">
+					<div class="row  podContainer navPod doubleStack">
+						<div class="podImage "><img src="/sites/default/files/'.$image3_big.'" /></div>
+						<div class="innerLabel"><h2>'.$title3.'</h2><p>'.$small_text3.'</p></div>			
+					</div>
+				</a>
+				
+	   		
+		</div>
+	   		<div class="span2">		
+	   		
+	   	  	<!-- position #4 -  SMALL -->
+
+				<a href="/node/'.$nid4.'">
+					<div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image4_small.'" /></div>
+						<div class="innerLabel"><h2>'.$title4.'</h2><p>'.$small_text4.'</p></div>			
+					</div>
+				</a>
+
+<br/>
+	   	  	<!-- position #5 -  SMALL -->
+
+				<a href="/node/'.$nid5.'">
+					<div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image5_small.'" /></div>
+						<div class="innerLabel"><h2>'.$title5.'</h2><p>'.$small_text5.'</p></div>			
+					</div>
+				</a>
+			</div>
+			
+				
+	   </div> ';
+	   
+	   $rendered = true;
+		   
+	   
+}   // end 5pods layout C
+
+
+if (($pods_layout == 'D') & ($pods_num == '5')) { 
+	    $vars['renderings'] = $pods_num.' pods, layout ' . $pods_layout.'<br><br>';
+
+
+	   if ($image1 == '')  $image1 = 'opening_press.jpg';
+  	   if ($image2 == '')  $image2 = 'field_trips.jpg';
+   	   if ($image3 == '')  $image3 = 'field_trips.jpg';
+   	   if ($image4 == '')  $image4 = 'cat.jpg';
+
+	      $vars['renderings'] .= '
+	   <div class="row">
+
+	   		
+	   		<div class="span3">
+				<div class="textWidePod">'.$small_description.'</div>
+	   				
+				</div>
+	   		
+	   		
+	   		</div>
+
+	   		<div class="span3">		
+				<a href="/node/'.$nid1.'">
+					<div class="row  podContainer navPod doubleStack">
+						<div class="podImage "><img src="/sites/default/files/'.$image1.'" /></div>
+						<div class="innerLabel"><h2>'.$title1.'</h2><p>This is descriptive text</p></div>			
+					</div>
+				</a>
+			</div>
+				
+	   		<div class="span3">		
+				<a href="/node/'.$nid2.'">
+					<div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image2.'" /></div>
+						<div class="innerLabel"><h2>'.$title2.'</h2><p>This is descriptive text</p></div>			
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="row">	
+	   		<div class="span3">		
+				<a href="/node/'.$nid3.'">
+					<div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image3.'" /></div>
+						<div class="innerLabel"><h2>'.$title3.'</h2><p>This is descriptive text</p></div>			
+					</div>
+				</a>
+			</div>
+			
+	   		<div class="span3">		
+				<a href="/node/'.$nid4.'">
+					<div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image4.'" /></div>
+						<div class="innerLabel"><h2>'.$title4.'</h2><p>This is descriptive text</p></div>			
+					</div>
+				</a>
+			</div>
+			
+	   		<div class="span3">		
+				<a href="/node/'.$nid5.'">
+					<div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image5.'" /></div>
+						<div class="innerLabel"><h2>'.$title5.'</h2><p>This is descriptive text</p></div>			
+					</div>
+				</a>
+			</div>
+				
+	   </div> ';
+	   
+	   $rendered = true;
+		   
+	   
+}   // end 5 pods layout D
+
+
+	
+	
+if 	  (!$rendered)
+
+  {
+	    $vars['renderings'] = 'DEFAULT:  '. $pods_num.' pods, layout ' . $pods_layout.'<br><br>';
+
+	
+   	   ///// set default immages
+   	      	   
+   	   if ($image1 == '')  $image1 = 'cat.jpg';
+  	   if ($image2 == '')  $image2 = 'cat.jpg';
+   	   if ($image3 == '')  $image3 = 'cat.jpg';
+   	   if ($image4 == '')  $image4 = 'cat.jpg';
+   	   if ($image5 == '')  $image5 = 'cat.jpg';
+		   
+		      $vars['renderings'] .= '
+	   <div class="row">
+	   
+	      	<div class="span3">'.$small_description.'</div>
+	   		
+	   		<div class="span3">
+	   			<a href="/node/'.$nid1.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image1.'" /></div>
+					<div class="innerLabel"><h2>'.$title1.'</h2><p>This is primary_pod1</p></div>
+				</div></a>
+				<br/><br/>
+	   		
+	   		</div>
+	   		
+	   		<div class="span3">				
+				<a href="/node/'.$nid2.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image2.'" /></div>
+					<div class="innerLabel"><h2>'.$title2.'</h2><p>This is descriptive text</p></div>			
+				</div></a>
+	   		</div>	
+	   </div>
+	   	   
+	   <div class="row">
+	   		<div class="span3">
+	   						<a href="/node/'.$nid3.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image3.'" /></div>
+					<div class="innerLabel"><h2>'.$title3.'</h2><p>This is descriptive text</p></div>
+			</div></a>
+	   				   		
+	   		</div>
+	   		
+	   		<div class="span3">
+	   		
+	   			<a href="/node/'.$nid4.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image4.'" /></div>
+					<div class="innerLabel"><h2>'.$title4.'</h2><p>This is primary_pod1</p></div>
+				</div></a>
+				<br/><br/>	
+	   		
+	   		</div>
+	   		<div class="span3">
+	  					<a href="/node/'.$nid5.'"><div class="row  podContainer navPod doubleStack">
+					<div class="podImage "><img src="/sites/default/files/'.$image5.'" /></div>
+					<div class="innerLabel"><h2>'.$title5.'</h2><p>This is descriptive text</p></div>
+			</div></a>
+				   		
+	   		</div>
+	   		
+	   </div> ';
+		   
+		   
+		   
+		   
+		   
+	   }  // end else
+	   
+	   
+	//  drupal_set_message('here it is<br>'.$vars['renderings']);
+	   
+   }
+   
+   
+   
+   } // end else render megapod layout
+  
+
+  
+}
+
+	
+
+function lookandfeel_preprocess_image(&$variables) {  
+// this strips the height and width tags off of the img tag
+  $attributes = $variables['attributes'];
+
+  foreach (array('width', 'height') as $key) {
+    unset($attributes[$key]);
+    unset($variables[$key]);
+  }
+
+  $variables['attributes'] = $attributes;
+ // drupal_set_message('<pre>' . print_r($variables, true) . '</pre>');
+
+}
+
+/*
+function theme_lookandfeel_5pods($variables) {
+
+
+   		// these are the #1-6 primary related pods
+   		$primary_pod1 = $node->field_primary_related_pod_;
+     	$primary_pod2 = $node->field_primary_related_pod_2;
+   		$primary_pod3 = $node->field_primary_related_pod_3;
+   		$primary_pod4 = $node->field_primary_related_pod_4;
+   		$primary_pod5 = $node->field_primary_related_pod_5;
+   		
+   		// primary pod #1
+   	   $primary_pod1 = $primary_pod1['und'][0]['entity'];  
+   	   $image1 = $primary_pod1->field_image['und'][0]['filename'];
+   	   $title1= $primary_pod1->title;
+   	   $nid1 = $primary_pod1->nid;
+   	   
+   		// primary pod #2
+   	   $primary_pod2 = $primary_pod2['und'][0]['entity'];  
+   	   $image2 = $primary_pod2->field_image['und'][0]['filename'];
+   	   $title2= $primary_pod2->title;
+   	   $nid2 = $primary_pod2->nid;
+   		
+    	// primary pod #3
+   	   $primary_pod3 = $primary_pod3['und'][0]['entity'];  
+   	   $image3 = $primary_pod3->field_image['und'][0]['filename'];
+   	   $title3= $primary_pod3->title;
+   	   $nid3 = $primary_pod3->nid;
+   		
+   	   // primary pod #4
+   	   $primary_pod4 = $primary_pod4['und'][0]['entity'];  
+   	   $image4 = $primary_pod4->field_image['und'][0]['filename'];
+   	   $title4= $primary_pod4->title;
+   	   $nid4 = $primary_pod4->nid;
+   		
+    	// primary pod #5
+   	   $primary_pod5 = $primary_pod5['und'][0]['entity'];  
+   	   $image5 = $primary_pod5->field_image['und'][0]['filename'];
+   	   $title5= $primary_pod5->title;
+   	   $nid5 = $primary_pod5->nid;
+   	   
+   	   
+   	   ///// set default immages
+   	   
+   	   
+   	   if ($image1 == '')  $image1 = 'cat.jpg';
+  	   if ($image2 == '')  $image2 = 'cat.jpg';
+   	   if ($image3 == '')  $image3 = 'cat.jpg';
+   	   if ($image4 == '')  $image4 = 'cat.jpg';
+   	   if ($image5 == '')  $image5 = 'cat.jpg';
+
+	
+	$5pod_layout = '
+	 
+	   
+	   <div class="row">
+	   
+	      	<div class="span4">'.$small_description.'</div>
+	   		
+	   		<div class="span2">
+	   		
+	   			
+	   			<a href="/node/'.$nid1.'"><div class="row  podContainer drop-shadow doubleStack">
+					<div class="podImage "><img src="http://explo1.exploratorium.edu/sites/default/files/'.$image1.'" /></div>
+					<div class="innerLabel"><h2>'.$title1.'</h2><p>This is primary_pod1</p></div>
+				</div></a>
+				<br/><br/>
+	   		
+	   		</div>
+	   		
+	   		<div class="span3">
+	   		
+	   	
+				
+				<a href="/node/'.$nid2.'"><div class="row  podContainer drop-shadow doubleStack">
+					<div class="podImage "><img src="http://explo1.exploratorium.edu/sites/default/files/'.$image2.'" /></div>
+					<div class="innerLabel"><h2>'.$title2.'</h2><p>This is descriptive text</p></div>
+			
+			
+				</div></a>
+	   		
+	   		
+	   		</div>
+	   		
+	
+	   </div>
+	   	   
+	   <div class="row">
+	   		<div class="span3">
+	   						<a href="/node/'.$nid3.'"><div class="row  podContainer drop-shadow doubleStack">
+					<div class="podImage "><img src="http://explo1.exploratorium.edu/sites/default/files/'.$image3.'" /></div>
+					<div class="innerLabel"><h2>'.$title3.'</h2><p>This is descriptive text</p></div>
+			
+			
+				</div></a>
+	   			
+	   	
+	   		
+	   		</div>
+	   		
+	   		<div class="span3">
+	   		
+	   			<a href="/node/'.$nid4.'"><div class="row  podContainer drop-shadow doubleStack">
+					<div class="podImage "><img src="http://explo1.exploratorium.edu/sites/default/files/'.$image4.'" /></div>
+					<div class="innerLabel"><h2>'.$title4.'</h2><p>This is primary_pod1</p></div>
+				</div></a>
+				<br/><br/>	
+	   		
+	   		</div>
+	   		
+	   		<div class="span3">
+	   		
+	   					<a href="/node/'.$nid5.'"><div class="row  podContainer drop-shadow doubleStack">
+					<div class="podImage "><img src="http://explo1.exploratorium.edu/sites/default/files/'.$image5.'" /></div>
+					<div class="innerLabel"><h2>'.$title5.'</h2><p>This is descriptive text</p></div>
+			
+			
+				</div></a>
+				   		
+	   		</div>
+	   		
+	   </div>
+	   
+	   
+	   
+	  
+	   ';
+	   return $5pod_layout;
+}
+
+*/

@@ -1,0 +1,6 @@
+; $Id$
+name = Look and Feel: Theming Examples
+description = Explo Look and Feel module
+package = Build a Module
+core = 7.x
+files[] = theming.module

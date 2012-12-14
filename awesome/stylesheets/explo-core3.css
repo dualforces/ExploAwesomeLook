@@ -1,0 +1,1022 @@
+/* EXPLO SCSS / BUILT WITH COMPASS */
+/* @group grid */
+/* line 28, ../sass/explo-core3.scss */
+.row .span1, .row .span2, .row .span3, .row .span4, .row .span5, .row .span6, .row .span7, .row .span8, .row .span9, .row .span10, .row .span11, .row .span12 {
+  float: left;
+  margin-left: 4%;
+}
+/* line 34, ../sass/explo-core3.scss */
+.row .span1 {
+  width: 4.667%;
+}
+/* line 34, ../sass/explo-core3.scss */
+.row .span2 {
+  width: 13.333%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span2 .span1 {
+  margin-left: 30%;
+  width: 35%;
+}
+/* line 34, ../sass/explo-core3.scss */
+.row .span3 {
+  width: 22%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span3 .span1 {
+  margin-left: 18.182%;
+  width: 21.212%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span3 .span2 {
+  margin-left: 18.182%;
+  width: 60.606%;
+}
+/* line 34, ../sass/explo-core3.scss */
+.row .span4 {
+  width: 30.667%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span4 .span1 {
+  margin-left: 13.043%;
+  width: 15.217%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span4 .span2 {
+  margin-left: 13.043%;
+  width: 43.478%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span4 .span3 {
+  margin-left: 13.043%;
+  width: 71.739%;
+}
+/* line 34, ../sass/explo-core3.scss */
+.row .span5 {
+  width: 39.333%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span5 .span1 {
+  margin-left: 10.169%;
+  width: 11.864%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span5 .span2 {
+  margin-left: 10.169%;
+  width: 33.898%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span5 .span3 {
+  margin-left: 10.169%;
+  width: 55.932%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span5 .span4 {
+  margin-left: 10.169%;
+  width: 77.966%;
+}
+/* line 34, ../sass/explo-core3.scss */
+.row .span6 {
+  width: 48%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span6 .span1 {
+  margin-left: 8.333%;
+  width: 9.722%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span6 .span2 {
+  margin-left: 8.333%;
+  width: 27.778%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span6 .span3 {
+  margin-left: 8.333%;
+  width: 45.833%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span6 .span4 {
+  margin-left: 8.333%;
+  width: 63.889%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span6 .span5 {
+  margin-left: 8.333%;
+  width: 81.944%;
+}
+/* line 34, ../sass/explo-core3.scss */
+.row .span7 {
+  width: 56.667%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span7 .span1 {
+  margin-left: 7.059%;
+  width: 8.235%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span7 .span2 {
+  margin-left: 7.059%;
+  width: 23.529%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span7 .span3 {
+  margin-left: 7.059%;
+  width: 38.824%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span7 .span4 {
+  margin-left: 7.059%;
+  width: 54.118%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span7 .span5 {
+  margin-left: 7.059%;
+  width: 69.412%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span7 .span6 {
+  margin-left: 7.059%;
+  width: 84.706%;
+}
+/* line 34, ../sass/explo-core3.scss */
+.row .span8 {
+  width: 65.333%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span8 .span1 {
+  margin-left: 6.122%;
+  width: 7.143%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span8 .span2 {
+  margin-left: 6.122%;
+  width: 20.408%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span8 .span3 {
+  margin-left: 6.122%;
+  width: 33.673%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span8 .span4 {
+  margin-left: 6.122%;
+  width: 46.939%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span8 .span5 {
+  margin-left: 6.122%;
+  width: 60.204%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span8 .span6 {
+  margin-left: 6.122%;
+  width: 73.469%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span8 .span7 {
+  margin-left: 6.122%;
+  width: 86.735%;
+}
+/* line 34, ../sass/explo-core3.scss */
+.row .span9 {
+  width: 74%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span9 .span1 {
+  margin-left: 5.405%;
+  width: 6.306%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span9 .span2 {
+  margin-left: 5.405%;
+  width: 18.018%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span9 .span3 {
+  margin-left: 5.405%;
+  width: 29.73%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span9 .span4 {
+  margin-left: 5.405%;
+  width: 41.441%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span9 .span5 {
+  margin-left: 5.405%;
+  width: 53.153%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span9 .span6 {
+  margin-left: 5.405%;
+  width: 64.865%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span9 .span7 {
+  margin-left: 5.405%;
+  width: 76.577%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span9 .span8 {
+  margin-left: 5.405%;
+  width: 88.288%;
+}
+/* line 34, ../sass/explo-core3.scss */
+.row .span10 {
+  width: 82.667%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span10 .span1 {
+  margin-left: 4.839%;
+  width: 5.645%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span10 .span2 {
+  margin-left: 4.839%;
+  width: 16.129%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span10 .span3 {
+  margin-left: 4.839%;
+  width: 26.613%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span10 .span4 {
+  margin-left: 4.839%;
+  width: 37.097%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span10 .span5 {
+  margin-left: 4.839%;
+  width: 47.581%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span10 .span6 {
+  margin-left: 4.839%;
+  width: 58.065%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span10 .span7 {
+  margin-left: 4.839%;
+  width: 68.548%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span10 .span8 {
+  margin-left: 4.839%;
+  width: 79.032%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span10 .span9 {
+  margin-left: 4.839%;
+  width: 89.516%;
+}
+/* line 34, ../sass/explo-core3.scss */
+.row .span11 {
+  width: 91.333%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span11 .span1 {
+  margin-left: 4.38%;
+  width: 5.109%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span11 .span2 {
+  margin-left: 4.38%;
+  width: 14.599%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span11 .span3 {
+  margin-left: 4.38%;
+  width: 24.088%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span11 .span4 {
+  margin-left: 4.38%;
+  width: 33.577%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span11 .span5 {
+  margin-left: 4.38%;
+  width: 43.066%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span11 .span6 {
+  margin-left: 4.38%;
+  width: 52.555%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span11 .span7 {
+  margin-left: 4.38%;
+  width: 62.044%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span11 .span8 {
+  margin-left: 4.38%;
+  width: 71.533%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span11 .span9 {
+  margin-left: 4.38%;
+  width: 81.022%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span11 .span10 {
+  margin-left: 4.38%;
+  width: 90.511%;
+}
+/* line 34, ../sass/explo-core3.scss */
+.row .span12 {
+  width: 100%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span12 .span1 {
+  margin-left: 4%;
+  width: 4.667%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span12 .span2 {
+  margin-left: 4%;
+  width: 13.333%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span12 .span3 {
+  margin-left: 4%;
+  width: 22%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span12 .span4 {
+  margin-left: 4%;
+  width: 30.667%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span12 .span5 {
+  margin-left: 4%;
+  width: 39.333%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span12 .span6 {
+  margin-left: 4%;
+  width: 48%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span12 .span7 {
+  margin-left: 4%;
+  width: 56.667%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span12 .span8 {
+  margin-left: 4%;
+  width: 65.333%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span12 .span9 {
+  margin-left: 4%;
+  width: 74%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span12 .span10 {
+  margin-left: 4%;
+  width: 82.667%;
+}
+/* line 39, ../sass/explo-core3.scss */
+.row .span12 .span11 {
+  margin-left: 4%;
+  width: 91.333%;
+}
+/* line 48, ../sass/explo-core3.scss */
+.row > :first-child,
+.row .row > :first-child {
+  margin-left: 0;
+}
+
+/* @group grid for small screen ala iphone */
+@media handheld, only screen and (max-width: 650px) {
+  /* line 57, ../sass/explo-core3.scss */
+  .row .span1, .row .span2, .row .span3, .row .span4, .row .span5, .row .span6, .row .span7, .row .span8, .row .span9, .row .span10, .row .span11, .row .span12 {
+    float: left;
+    margin-left: 4%;
+  }
+  /* line 63, ../sass/explo-core3.scss */
+  .row .span1 {
+    width: 4.667%;
+  }
+  /* line 63, ../sass/explo-core3.scss */
+  .row .span2 {
+    width: 13.333%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span2 .span1 {
+    margin-left: 30%;
+    width: 35%;
+    width: 93%;
+  }
+  /* line 63, ../sass/explo-core3.scss */
+  .row .span3 {
+    width: 22%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span3 .span1 {
+    margin-left: 18.182%;
+    width: 21.212%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span3 .span2 {
+    margin-left: 18.182%;
+    width: 60.606%;
+    width: 93%;
+  }
+  /* line 63, ../sass/explo-core3.scss */
+  .row .span4 {
+    width: 30.667%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span4 .span1 {
+    margin-left: 13.043%;
+    width: 15.217%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span4 .span2 {
+    margin-left: 13.043%;
+    width: 43.478%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span4 .span3 {
+    margin-left: 13.043%;
+    width: 71.739%;
+    width: 93%;
+  }
+  /* line 63, ../sass/explo-core3.scss */
+  .row .span5 {
+    width: 39.333%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span5 .span1 {
+    margin-left: 10.169%;
+    width: 11.864%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span5 .span2 {
+    margin-left: 10.169%;
+    width: 33.898%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span5 .span3 {
+    margin-left: 10.169%;
+    width: 55.932%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span5 .span4 {
+    margin-left: 10.169%;
+    width: 77.966%;
+    width: 93%;
+  }
+  /* line 63, ../sass/explo-core3.scss */
+  .row .span6 {
+    width: 48%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span6 .span1 {
+    margin-left: 8.333%;
+    width: 9.722%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span6 .span2 {
+    margin-left: 8.333%;
+    width: 27.778%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span6 .span3 {
+    margin-left: 8.333%;
+    width: 45.833%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span6 .span4 {
+    margin-left: 8.333%;
+    width: 63.889%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span6 .span5 {
+    margin-left: 8.333%;
+    width: 81.944%;
+    width: 93%;
+  }
+  /* line 63, ../sass/explo-core3.scss */
+  .row .span7 {
+    width: 56.667%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span7 .span1 {
+    margin-left: 7.059%;
+    width: 8.235%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span7 .span2 {
+    margin-left: 7.059%;
+    width: 23.529%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span7 .span3 {
+    margin-left: 7.059%;
+    width: 38.824%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span7 .span4 {
+    margin-left: 7.059%;
+    width: 54.118%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span7 .span5 {
+    margin-left: 7.059%;
+    width: 69.412%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span7 .span6 {
+    margin-left: 7.059%;
+    width: 84.706%;
+    width: 93%;
+  }
+  /* line 63, ../sass/explo-core3.scss */
+  .row .span8 {
+    width: 65.333%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span8 .span1 {
+    margin-left: 6.122%;
+    width: 7.143%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span8 .span2 {
+    margin-left: 6.122%;
+    width: 20.408%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span8 .span3 {
+    margin-left: 6.122%;
+    width: 33.673%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span8 .span4 {
+    margin-left: 6.122%;
+    width: 46.939%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span8 .span5 {
+    margin-left: 6.122%;
+    width: 60.204%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span8 .span6 {
+    margin-left: 6.122%;
+    width: 73.469%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span8 .span7 {
+    margin-left: 6.122%;
+    width: 86.735%;
+    width: 93%;
+  }
+  /* line 63, ../sass/explo-core3.scss */
+  .row .span9 {
+    width: 74%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span9 .span1 {
+    margin-left: 5.405%;
+    width: 6.306%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span9 .span2 {
+    margin-left: 5.405%;
+    width: 18.018%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span9 .span3 {
+    margin-left: 5.405%;
+    width: 29.73%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span9 .span4 {
+    margin-left: 5.405%;
+    width: 41.441%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span9 .span5 {
+    margin-left: 5.405%;
+    width: 53.153%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span9 .span6 {
+    margin-left: 5.405%;
+    width: 64.865%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span9 .span7 {
+    margin-left: 5.405%;
+    width: 76.577%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span9 .span8 {
+    margin-left: 5.405%;
+    width: 88.288%;
+    width: 93%;
+  }
+  /* line 63, ../sass/explo-core3.scss */
+  .row .span10 {
+    width: 82.667%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span10 .span1 {
+    margin-left: 4.839%;
+    width: 5.645%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span10 .span2 {
+    margin-left: 4.839%;
+    width: 16.129%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span10 .span3 {
+    margin-left: 4.839%;
+    width: 26.613%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span10 .span4 {
+    margin-left: 4.839%;
+    width: 37.097%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span10 .span5 {
+    margin-left: 4.839%;
+    width: 47.581%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span10 .span6 {
+    margin-left: 4.839%;
+    width: 58.065%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span10 .span7 {
+    margin-left: 4.839%;
+    width: 68.548%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span10 .span8 {
+    margin-left: 4.839%;
+    width: 79.032%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span10 .span9 {
+    margin-left: 4.839%;
+    width: 89.516%;
+    width: 93%;
+  }
+  /* line 63, ../sass/explo-core3.scss */
+  .row .span11 {
+    width: 91.333%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span11 .span1 {
+    margin-left: 4.38%;
+    width: 5.109%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span11 .span2 {
+    margin-left: 4.38%;
+    width: 14.599%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span11 .span3 {
+    margin-left: 4.38%;
+    width: 24.088%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span11 .span4 {
+    margin-left: 4.38%;
+    width: 33.577%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span11 .span5 {
+    margin-left: 4.38%;
+    width: 43.066%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span11 .span6 {
+    margin-left: 4.38%;
+    width: 52.555%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span11 .span7 {
+    margin-left: 4.38%;
+    width: 62.044%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span11 .span8 {
+    margin-left: 4.38%;
+    width: 71.533%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span11 .span9 {
+    margin-left: 4.38%;
+    width: 81.022%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span11 .span10 {
+    margin-left: 4.38%;
+    width: 90.511%;
+    width: 93%;
+  }
+  /* line 63, ../sass/explo-core3.scss */
+  .row .span12 {
+    width: 100%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span12 .span1 {
+    margin-left: 4%;
+    width: 4.667%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span12 .span2 {
+    margin-left: 4%;
+    width: 13.333%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span12 .span3 {
+    margin-left: 4%;
+    width: 22%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span12 .span4 {
+    margin-left: 4%;
+    width: 30.667%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span12 .span5 {
+    margin-left: 4%;
+    width: 39.333%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span12 .span6 {
+    margin-left: 4%;
+    width: 48%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span12 .span7 {
+    margin-left: 4%;
+    width: 56.667%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span12 .span8 {
+    margin-left: 4%;
+    width: 65.333%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span12 .span9 {
+    margin-left: 4%;
+    width: 74%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span12 .span10 {
+    margin-left: 4%;
+    width: 82.667%;
+    width: 93%;
+  }
+  /* line 67, ../sass/explo-core3.scss */
+  .row .span12 .span11 {
+    margin-left: 4%;
+    width: 91.333%;
+    width: 93%;
+  }
+}
+/* line 80, ../sass/explo-core3.scss */
+.row:after {
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+
+/* line 88, ../sass/explo-core3.scss */
+.lte7 .row {
+  height: 1%;
+}
+
+/* line 92, ../sass/explo-core3.scss */
+.pod {
+  width: 100%;
+}
+
+/* line 95, ../sass/explo-core3.scss */
+.wrapper {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* @end */
+/* @group basic reset */
+/* line 109, ../sass/explo-core3.scss */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 114, ../sass/explo-core3.scss */
+body {
+  background: #fff;
+  font: 10px/20px Helvetica, Arial, sans-serif;
+}
+
+/* line 119, ../sass/explo-core3.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 123, ../sass/explo-core3.scss */
+h2 {
+  font-size: 2pem;
+  line-height: 36px;
+  # text-transform: uppercase;
+}
+
+/* @end */
+/* @group extra styling for grid demo */
+/* line 131, ../sass/explo-core3.scss */
+.row {
+  margin-bottom: 4px;
+}
+
+/* line 135, ../sass/explo-core3.scss */
+.row > [class*="span"] {
+  min-height: 80px;
+  text-align: left;
+  padding: 5px 0;
+}
+
+/* line 142, ../sass/explo-core3.scss */
+.row .row {
+  background: none;
+  margin-bottom: 0;
+}
+
+/* line 146, ../sass/explo-core3.scss */
+.row .row > [class*="span"] {
+  # background: #ff00ff;
+  min-height: 100%;
+}
+
+/* @end */
+
+
+
+
+/* @group basic reset */
+/* line 109, ../sass/explo-core3.scss */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 114, ../sass/explo-core3.scss */
+body {
+  background: #fff;
+  font: 10px/20px Helvetica, Arial, sans-serif;
+}
+
+/* line 119, ../sass/explo-core3.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 123, ../sass/explo-core3.scss */
+h2 {
+  font-size: 2pem;
+  line-height: 36px;
+  # text-transform: uppercase;
+}
+
+/* @end */
+/* @group extra styling for grid demo */
+/* line 131, ../sass/explo-core3.scss */
+.row {
+  margin-bottom: 4px;
+}
+
+/* line 135, ../sass/explo-core3.scss */
+.row > [class*="span"] {
+  min-height: 80px;
+  text-align: left;
+  padding: 5px 0;
+}
+
+/* line 142, ../sass/explo-core3.scss */
+.row .row {
+  background: none;
+  margin-bottom: 0;
+}
+
+/* line 146, ../sass/explo-core3.scss */
+.row .row > [class*="span"] {
+  # background: #ff00ff;
+  min-height: 100%;
+}
+
+/* @end */
+
+/* @group basic reset */
+
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+h2 {
+  font-size: 2pem;
+/*  line-height: 36px;*/
+  # text-transform: uppercase;
+}
+
+/* @end */
+/* @group extra styling for grid demo */
+.row {
+  margin-bottom: 4px;
+}
+
+.row > [class*="span"] {
+  min-height: 80px;
+  text-align: left;
+  padding: 5px 0;
+}
+
+.row .row {
+  background: none;
+  margin-bottom: 0;
+}
+
+.row .row > [class*="span"] {
+  # background: #ff00ff;
+  min-height: 100%;
+}
+
+/* @end */
